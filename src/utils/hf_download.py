@@ -12,7 +12,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--repo-id', type=str)
     parser.add_argument('--local-dir', type=str)
-    parser.add_argument('--repo-type', type=str, default='None')
+    parser.add_argument('--repo-type', type=str, default=None)
 
     args = parser.parse_args()
 
