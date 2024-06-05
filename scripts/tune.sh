@@ -36,7 +36,7 @@ conda activate tune
 
 SAMPLES_DIR=$HOME/project/SAIT_project/src/external/torchtune/recipes/scripts
 cd $SAMPLES_DIR
-bash cluster_tune_lora_kernel_filtered_123_dulda.sh
+bash ./cluster_tune_lora_kernel_filtered_123_dulda.sh
 
 cd $SLURM_SUBMIT_DIR
 
