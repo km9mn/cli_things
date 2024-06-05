@@ -35,7 +35,7 @@ echo "conda activate tune"
 conda activate tune
 
 SAMPLES_DIR=$HOME/project/SAIT_project/src/external/torchtune/recipes/scripts
-bash $SAMPLES_DIR/cluster_tune_lora_kernel_filtered_123_dulda.sh
+tune $SAMPLES_DIR/run --nproc_per_node 2 lora_finetune_distributed --config recipes/configs/llama3/cluster_8B_lora_kernel_fixed_fair_and_balanced_dulda_true.yaml
 
 date
 
