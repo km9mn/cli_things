@@ -34,8 +34,8 @@ source $HOME/anaconda3/etc/profile.d/conda.sh
 echo "conda activate tune"
 conda activate tune
 
-SAMPLES_DIR=$HOME/project/SAIT_project/src/external/torchtune
-bash $SAMPLES_DIR/recipes/scripts/cluster_tune_lora_kernel_filtered_123_dulda.sh
+SAMPLES_DIR=$HOME/project/SAIT_project/src/external/torchtune/recipes/scripts
+bash $SAMPLES_DIR/cluster_tune_lora_kernel_filtered_123_dulda.sh
 
 date
 
