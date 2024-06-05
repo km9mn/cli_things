@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#SBATCH -J tune-kernel
-#SBATCH -o tune-kernel.out
+#SBATCH -J test
+#SBATCH -o test.out
 #SBATCH -t 72:00:00
 
 #### Select GPU
@@ -35,7 +35,7 @@ echo "conda activate tune"
 conda activate tune
 
 SAMPLES_DIR=$HOME/project/cli_things/src/utils
-bash $SAMPLES_DIR/url_test.py
+python3 $SAMPLES_DIR/url_test.py
 
 date
 
