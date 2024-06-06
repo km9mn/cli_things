@@ -36,7 +36,7 @@ conda activate tune
 
 SAMPLES_DIR=$HOME/project/SAIT_project/src/external/torchtune
 cd $SAMPLES_DIR
-tune run --nproc_per_node 2 lora_finetune_distributed --config recipes/configs/llama3/cluster_8B_lora_kernel_fixed_fair_and_balanced_dulda_true.yaml
+tune run --nproc_per_node 2 lora_finetune_distributed --config recipes/configs/llama3/cluster_8B_lora_kernel_fixed_fair_and_balanced_dulda_true.yaml --master_port 7592
 
 cd $SLURM_SUBMIT_DIR
 
