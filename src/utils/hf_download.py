@@ -1,5 +1,8 @@
 from huggingface_hub import snapshot_download
 import argparse
+import os
+
+os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 
 def download(args):
     snapshot_download(repo_id=args.repo_id,
