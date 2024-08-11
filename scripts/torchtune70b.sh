@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#SBATCH -J torhtune_0810
-#SBATCH -o torchtune_0810.out
+#SBATCH -J torhtune_0812
+#SBATCH -o torchtune_0812.out
 #SBATCH -t 72:00:00
 
 #### Select GPU
@@ -35,7 +35,7 @@ conda activate torchtune
 
 SAMPLES_DIR=$HOME/project/torchtune/
 cd $SAMPLES_DIR
-NCCL_BLOCKING_WAIT=0
+export NCCL_IB_GID_INDEX=3
 tune run --nproc_per_node 2 lora_finetune_distributed --config recipes/configs/llama3/cluster_70B_lora.yaml
 
 cd $SLURM_SUBMIT_DIR
