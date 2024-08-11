@@ -36,6 +36,8 @@ conda activate torchtune
 SAMPLES_DIR=$HOME/project/torchtune/
 cd $SAMPLES_DIR
 export NCCL_IB_GID_INDEX=3
+export NCCL_P2P_DISABLE=1
+export NCCL_IB_DISABLE=1
 tune run --nproc_per_node 2 lora_finetune_distributed --config recipes/configs/llama3/cluster_70B_lora.yaml
 
 cd $SLURM_SUBMIT_DIR
