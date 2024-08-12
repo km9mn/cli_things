@@ -1,0 +1,164 @@
+SLURM_SUBMIT_DIR=/home/kyuminkim/project/cli_things/scripts
+CUDA_HOME=
+CUDA_VISIBLE_DEVICES=0,1
+CUDA_VERSION=
+0: n58.gasi-cluster
+0: /home/kyuminkim/project/cli_things/scripts
+0: 2024. 08. 12. (월) 04:25:32 KST
+Start
+conda PATH
+source /home/kyuminkim/anaconda3/etc/profile.d/conda.sh
+conda activate torchtune
+W0812 07:28:17.201000 140240395458368 torch/distributed/run.py:757] 
+W0812 07:28:17.201000 140240395458368 torch/distributed/run.py:757] *****************************************
+W0812 07:28:17.201000 140240395458368 torch/distributed/run.py:757] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0812 07:28:17.201000 140240395458368 torch/distributed/run.py:757] *****************************************
+INFO:torchtune.utils.logging:Running LoRAFinetuneRecipeDistributed with resolved config:
+
+batch_size: 2
+checkpointer:
+  _component_: torchtune.utils.FullModelHFCheckpointer
+  checkpoint_dir: /home/kyuminkim/weights/llama/Meta-Llama-3-70B-Instruct
+  checkpoint_files:
+  - model-00001-of-00030.safetensors
+  - model-00002-of-00030.safetensors
+  - model-00003-of-00030.safetensors
+  - model-00004-of-00030.safetensors
+  - model-00005-of-00030.safetensors
+  - model-00006-of-00030.safetensors
+  - model-00007-of-00030.safetensors
+  - model-00008-of-00030.safetensors
+  - model-00009-of-00030.safetensors
+  - model-00010-of-00030.safetensors
+  - model-00011-of-00030.safetensors
+  - model-00012-of-00030.safetensors
+  - model-00013-of-00030.safetensors
+  - model-00014-of-00030.safetensors
+  - model-00015-of-00030.safetensors
+  - model-00016-of-00030.safetensors
+  - model-00017-of-00030.safetensors
+  - model-00018-of-00030.safetensors
+  - model-00019-of-00030.safetensors
+  - model-00020-of-00030.safetensors
+  - model-00021-of-00030.safetensors
+  - model-00022-of-00030.safetensors
+  - model-00023-of-00030.safetensors
+  - model-00024-of-00030.safetensors
+  - model-00025-of-00030.safetensors
+  - model-00026-of-00030.safetensors
+  - model-00027-of-00030.safetensors
+  - model-00028-of-00030.safetensors
+  - model-00029-of-00030.safetensors
+  - model-00030-of-00030.safetensors
+  model_type: LLAMA3
+  output_dir: /home/kyuminkim/weights/llama/llama3_tuned/70B/lora
+  recipe_checkpoint: null
+dataset:
+  _component_: torchtune.datasets.alpaca_dataset
+  data_files: /home/kyuminkim/datasets/table/wikisql/kernel3/new_bool/
+  source: json
+  split: train
+  template: torchtune.data.AlpacaInstructTemplate
+device: cuda
+dtype: bf16
+enable_activation_checkpointing: true
+epochs: 3
+gradient_accumulation_steps: 1
+log_every_n_steps: 1
+log_peak_memory_stats: false
+loss:
+  _component_: torch.nn.CrossEntropyLoss
+lr_scheduler:
+  _component_: torchtune.modules.get_cosine_schedule_with_warmup
+  num_warmup_steps: 100
+max_steps_per_epoch: null
+metric_logger:
+  _component_: torchtune.utils.metric_logging.DiskLogger
+  log_dir: /tmp/lora_finetune_output
+model:
+  _component_: torchtune.models.llama3.lora_llama3_70b
+  apply_lora_to_mlp: false
+  apply_lora_to_output: false
+  lora_alpha: 32
+  lora_attn_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  lora_rank: 16
+optimizer:
+  _component_: torch.optim.AdamW
+  lr: 0.0003
+  weight_decay: 0.01
+output_dir: /tmp/lora_finetune_output
+resume_from_checkpoint: false
+save_adapter_weights_only: false
+seed: null
+shuffle: true
+tokenizer:
+  _component_: torchtune.models.llama3.llama3_tokenizer
+  path: /home/kyuminkim/weights/llama/Meta-Llama-3-70B-Instruct/original/tokenizer.model
+
+DEBUG:torchtune.utils.logging:Setting manual seed to local seed 1281807775. Local seed is seed + rank = 1281807775 + 0
+Writing logs to /tmp/lora_finetune_output/log_1723419371.txt
+INFO:torchtune.utils.logging:FSDP is enabled. Instantiating Model on CPU for Rank 0 ...
+INFO:torchtune.utils.logging:Model instantiation took 54.83 secs
+[rank1]:[E ProcessGroupNCCL.cpp:563] [Rank 1] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=2, OpType=BROADCAST, NumelIn=131072, NumelOut=131072, Timeout(ms)=600000) ran for 600046 milliseconds before timing out.
+[rank1]:[E ProcessGroupNCCL.cpp:1537] [PG 0 Rank 1] Timeout at NCCL work: 2, last enqueued NCCL work: 141, last completed NCCL work: 1.
+[rank1]:[E ProcessGroupNCCL.cpp:577] [Rank 1] Some NCCL operations have failed or timed out. Due to the asynchronous nature of CUDA kernels, subsequent GPU operations might run on corrupted/incomplete data.
+[rank1]:[E ProcessGroupNCCL.cpp:583] [Rank 1] To avoid data inconsistency, we are taking the entire process down.
+[rank1]:[E ProcessGroupNCCL.cpp:1414] [PG 0 Rank 1] Process group watchdog thread terminated with exception: [Rank 1] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=2, OpType=BROADCAST, NumelIn=131072, NumelOut=131072, Timeout(ms)=600000) ran for 600046 milliseconds before timing out.
+Exception raised from checkTimeout at /opt/conda/conda-bld/pytorch_1716905979055/work/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:565 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x57 (0x7faa25bbc897 in /home/kyuminkim/anaconda3/envs/torchtune/lib/python3.10/site-packages/torch/lib/libc10.so)
+frame #1: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1d2 (0x7faa26eb48e2 in /home/kyuminkim/anaconda3/envs/torchtune/lib/python3.10/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: c10d::ProcessGroupNCCL::watchdogHandler() + 0x1a0 (0x7faa26eb9700 in /home/kyuminkim/anaconda3/envs/torchtune/lib/python3.10/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x10c (0x7faa26ebaa4c in /home/kyuminkim/anaconda3/envs/torchtune/lib/python3.10/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xdbbf4 (0x7faa750c3bf4 in /home/kyuminkim/anaconda3/envs/torchtune/lib/python3.10/site-packages/torch/lib/../../../.././libstdc++.so.6)
+frame #5: <unknown function> + 0x81cf (0x7faa8ac7e1cf in /lib64/libpthread.so.0)
+frame #6: clone + 0x43 (0x7faa8a15fe73 in /lib64/libc.so.6)
+
+W0812 08:54:12.568000 140240395458368 torch/distributed/elastic/multiprocessing/api.py:851] Sending process 2197199 closing signal SIGTERM
+E0812 08:54:15.039000 140240395458368 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: -6) local_rank: 1 (pid: 2197201) of binary: /home/kyuminkim/anaconda3/envs/torchtune/bin/python
+Running with torchrun...
+Traceback (most recent call last):
+  File "/home/kyuminkim/anaconda3/envs/torchtune/bin/tune", line 8, in <module>
+    sys.exit(main())
+  File "/home/kyuminkim/project/torchtune/torchtune/_cli/tune.py", line 49, in main
+    parser.run(args)
+  File "/home/kyuminkim/project/torchtune/torchtune/_cli/tune.py", line 43, in run
+    args.func(args)
+  File "/home/kyuminkim/project/torchtune/torchtune/_cli/run.py", line 177, in _run_cmd
+    self._run_distributed(args)
+  File "/home/kyuminkim/project/torchtune/torchtune/_cli/run.py", line 88, in _run_distributed
+    run(args)
+  File "/home/kyuminkim/anaconda3/envs/torchtune/lib/python3.10/site-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/home/kyuminkim/anaconda3/envs/torchtune/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/kyuminkim/anaconda3/envs/torchtune/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+/home/kyuminkim/project/torchtune/recipes/lora_finetune_distributed.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-08-12_08:54:12
+  host      : n58.gasi-cluster
+  rank      : 1 (local_rank: 1)
+  exitcode  : -6 (pid: 2197201)
+  error_file: <N/A>
+  traceback : Signal 6 (SIGABRT) received by PID 2197201
+============================================================
+2024. 08. 12. (월) 08:54:19 KST
+conda deactivate torchtune
+
+ArgumentError: deactivate does not accept arguments
+remainder_args: ['torchtune']
+
+
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+            337012 A100-80GB torhtune kyuminki  R    4:40:02      1 n58
+##### END #####
