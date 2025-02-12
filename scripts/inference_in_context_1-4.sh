@@ -40,7 +40,7 @@ cd $SAMPLES_DIR
 MODEL_PATH="/home/kyuminkim/weights/llama/Llama-3.1-8B-Instruct"
 FOLD_PATH="/home/kyuminkim/datasets/table/pieta/inference_results/llama3_full_wikisql_kernel4_coord_in_context_1-4.json"
 
-HYDRA_FULL_ERROR=1 python src/test/inference/main_llama3.py evaluation_module=divide_conquer_vllm_llama3_incontext_wikisql_coord_2shot_tensor_parallel evaluation_module.LLM_module.model_path="$MODEL_PATH" evaluation_module.save_dir="$FOLD_PATH" evaluation_module.batch_size=null evaluation_module.dataset.json_path="/home/kyuminkim/datasets/table/wikisql/validation/4/wikisql_validation_title-1-4.json" evaluation_module.dataset.kernel_size=4 evaluation_module.dataset.csv_dir="/home/kyuminkim/datasets/table/wikisql/validation/table" evaluation_module.dataset.moving_size=1
+HYDRA_FULL_ERROR=1 python src/test/inference/main_llama3.py evaluation_module=divide_conquer_vllm_llama3_incontext_wikisql_coord_2shot_tensor_parallel evaluation_module.LLM_module.model_path="$MODEL_PATH" evaluation_module.save_dir="$FOLD_PATH" evaluation_module.batch_size=null evaluation_module.dataset.json_path="/home/kyuminkim/datasets/table/wikisql/validation/4/wikisql_valid_title-1-4.json" evaluation_module.dataset.kernel_size=4 evaluation_module.dataset.csv_dir="/home/kyuminkim/datasets/table/wikisql/validation/table" evaluation_module.dataset.moving_size=1
 
 date
 
