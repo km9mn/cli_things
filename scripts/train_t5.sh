@@ -32,7 +32,7 @@ echo "source $HOME/anaconda3/etc/profile.d/conda.sh"
 source $HOME/anaconda3/etc/profile.d/conda.sh
 
 echo "conda activate tabllm"
-conda activatetabllm
+conda activate tabllm
 
 SAMPLES_DIR=$HOME/project/cabinet/
 cd $SAMPLES_DIR
