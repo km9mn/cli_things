@@ -7,7 +7,7 @@
 #### Select GPU
 #SBATCH -q hpgpu
 #SBATCH -p A100-80GB
-#SBATCH --gres=gpu:2
+#SBATCH --gres=gpu:4
 
 ## node 지정하기
 #SBATCH --nodes=1
