@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#SBATCH -J train_t5
-#SBATCH -o train_t5.out
+#SBATCH -J train_t5_4
+#SBATCH -o train_t5_4.out
 #SBATCH -t 72:00:00
 
 #### Select GPU
