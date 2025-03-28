@@ -33,7 +33,7 @@ source $HOME/anaconda3/etc/profile.d/conda.sh
 echo "conda activate tune"
 conda activate tune
 
-SAMPLES_DIR=$HOME/project/SAIT_project/src/external/torchtune
+SAMPLES_DIR=$HOME/project/torchtune
 cd $SAMPLES_DIR
 tune run --nproc_per_node 4 --master_port 29600 full_finetune_distributed --config recipes/configs/qwen2_5/pieta/wikisql_k4.yaml
 
