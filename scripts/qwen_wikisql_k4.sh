@@ -40,7 +40,7 @@ cd $SAMPLES_DIR
 MODEL_PATH="/home/kyuminkim/weights/llm/qwen_finetuned/qwen_wikisql_k4/"
 FOLD_PATH="/home/kyuminkim/datasets/table/pieta/results/qwen_wikisql_kernel4_coord.json"
 
-HYDRA_FULL_ERROR=1 python src/test/inference/main_llama3.py evaluation_module=divide_conquer_vllm_llama3_wikisql_coord_tensor_parallel evaluation_module.LLM_module.model_path="$MODEL_PATH" evaluation_module.LLM_module.temperature=0.7 evaluation_module.LLM_module.top_p=1 evaluation_module.LLM_module.tensor_parallel_size = 4 evaluation_module.save_dir="$FOLD_PATH" evaluation_module.batch_size=null evaluation_module.dataset.csv_dir="/home/kyuminkim/datasets/table/wikisql/wikisql_test_csv" evaluation_module.dataset.json_path="/home/kyuminkim/datasets/table/wikisql/wikisql_test_title.json" evaluation_module.dataset.kernel_size=4 evaluation_module.dataset.moving_size=1
+HYDRA_FULL_ERROR=1 python src/test/inference/main_llama3.py evaluation_module=divide_conquer_vllm_llama3_wikisql_coord_tensor_parallel evaluation_module.LLM_module.model_path="$MODEL_PATH" evaluation_module.LLM_module.temperature=0.7 evaluation_module.LLM_module.top_p=1 evaluation_module.LLM_module.tensor_parallel_size=4 evaluation_module.save_dir="$FOLD_PATH" evaluation_module.batch_size=null evaluation_module.dataset.csv_dir="/home/kyuminkim/datasets/table/wikisql/wikisql_test_csv" evaluation_module.dataset.json_path="/home/kyuminkim/datasets/table/wikisql/wikisql_test_title.json" evaluation_module.dataset.kernel_size=4 evaluation_module.dataset.moving_size=1
 
 date
 
