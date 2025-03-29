@@ -41,7 +41,7 @@ FOLD_PATH="/home/kyuminkim/datasets/table/pieta/results/qwen_wtq_kernel4_coord_2
 CSV_PATH="/home/kyuminkim/datasets/table/wtq/wikitq_test_csv"
 TSV_PATH="/home/kyuminkim/datasets/table/wtq/wtq_test_split/wikitq_test_2-3.tsv"
 
-HYDRA_FULL_ERROR=1 python src/test/inference/main_llama3.py evaluation_module=divide_conquer_vllm_qwen_wtq_coord_tensor_parallel evaluation_module.LLM_module.model_path="$MODEL_PATH" evaluation_module.LLM_module.temperature=0.7 evaluation_module.LLM_module.top_p=1 evaluation_module.LLM_module.tensor_parallel_size=4 evaluation_module.save_dir="$FOLD_PATH" evaluation_module.batch_size=null evaluation_module.dataset.csv_dir="$CSV_PATH" evaluation_module.dataset.tsv_path="$TSV_PATH" evaluation_module.dataset.kernel_size=4 evaluation_module.dataset.moving_size=1
+HYDRA_FULL_ERROR=1 python src/test/inference/main_llama3.py evaluation_module=divide_conquer_vllm_qwen_wtq_coord_tensor_parallel evaluation_module.LLM_module.model_path="$MODEL_PATH" evaluation_module.LLM_module.temperature=0.7 evaluation_module.LLM_module.top_p=1 evaluation_module.LLM_module.tensor_parallel_size=4 evaluation_module.save_dir="$FOLD_PATH" evaluation_module.batch_size=null evaluation_module.dataset.csv_dir_path="$CSV_PATH" evaluation_module.dataset.tsv_path="$TSV_PATH" evaluation_module.dataset.kernel_size=4 evaluation_module.dataset.moving_size=1
 
 date
 
