@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#SBATCH -J qwen_wtq_k4_1
-#SBATCH -o qwen_wtq_k4_1.out
+#SBATCH -J pieta_feta
+#SBATCH -o pieta_feta.out
 #SBATCH -t 72:00:00
 
 #### Select GPU
