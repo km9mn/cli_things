@@ -37,8 +37,8 @@ SAMPLES_DIR=$HOME/project/SAIT_project/
 cd $SAMPLES_DIR
 
 MODEL_PATH="/home/kyuminkim/weights/llama/llama3_tuned/wtq_kernel4_coord_after_balanced_epoch_0"
-FOLD_PATH="/home/kyuminkim/datasets/table/pieta/results/llama_fetaqa_kernel4_coord.json"
-CSV_PATH="/home/kyuminkim/datasets/table/fetaqa/fetaqa_test_csv"
+FOLD_PATH="/home/kyuminkim/datasets/table/pieta/results/llama_fetaqa_kernel4_coord_step2.json"
+CSV_PATH="/home/kyuminkim/datasets/table/pieta/subtable/pieta_fetaqa"
 JSON_PATH="/home/kyuminkim/datasets/table/fetaqa/test.json"
 
 HYDRA_FULL_ERROR=1 python src/test/inference/main_llama3.py evaluation_module=divide_conquer_vllm_llama3_wikisql_coord_tensor_parallel evaluation_module.LLM_module.model_path="$MODEL_PATH" evaluation_module.LLM_module.temperature=0.7 evaluation_module.LLM_module.top_p=1 evaluation_module.LLM_module.tensor_parallel_size=4 evaluation_module.save_dir="$FOLD_PATH" evaluation_module.batch_size=NULL evaluation_module.dataset.json_path="$JSON_PATH" evaluation_module.dataset.kernel_size=4 evaluation_module.dataset.csv_dir="$CSV_PATH" evaluation_module.dataset.moving_size=1
