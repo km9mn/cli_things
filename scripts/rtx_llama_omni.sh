@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#SBATCH -J llama_omni
-#SBATCH -o llama_omni.out
+#SBATCH -J rtx_llama_omni
+#SBATCH -o rtx_llama_omni.out
 #SBATCH -t 72:00:00
 
 #### Select GPU
