@@ -5,7 +5,7 @@
 #SBATCH -t 72:00:00
 
 #### Select GPU
-#SBATCH -h hpgpu
+#SBATCH -q hpgpu
 #SBATCH -p A100-80GB
 #SBATCH --gres=gpu:4
 
