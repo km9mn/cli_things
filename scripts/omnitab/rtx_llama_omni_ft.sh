@@ -7,7 +7,7 @@
 #### Select GPU
 #SBATCH -q hpgpu
 #SBATCH -p A100-80GB
-#SBATCH --gres=gpu:4
+#SBATCH --gres=gpu:6
 
 ## node 지정하기
 #SBATCH --nodes=1
@@ -37,7 +37,7 @@ conda activate tune
 SAMPLES_DIR=$HOME/project/torchtune
 cd $SAMPLES_DIR
 
-tune run --nproc_per_node 4 --master_port 29600 full_finetune_distributed --config recipes/configs/llama3_1/omnitab/8B_full_wtq_cluster.yaml
+tune run --nproc_per_node 6 --master_port 29600 full_finetune_distributed --config recipes/configs/llama3_1/omnitab/8B_full_wtq_cluster.yaml
 
 date
 
