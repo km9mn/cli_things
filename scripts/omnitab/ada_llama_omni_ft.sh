@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#SBATCH -J wtq_llama
-#SBATCH -o wtq_llama.out
+#SBATCH -J rtx_wtq_llama
+#SBATCH -o rtx_wtq_llama.out
 #SBATCH -t 72:00:00
 
 #### Select GPU
