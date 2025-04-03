@@ -36,7 +36,7 @@ conda activate tune
 SAMPLES_DIR=$HOME/project/torchtune
 cd $SAMPLES_DIR
 
-tune run --nproc_per_node 8 --master_port 29600 full_finetune_distributed --config recipes/configs/llama3_1/omnitab/8B_full_wtq_cluster.yaml
+tune run --nproc_per_node 8 --master_port 29600 full_finetune_distributed --config recipes/configs/llama3_1/omnitab/8B_full_wtq_cluster_mem.yaml
 
 date
 
